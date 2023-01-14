@@ -5,8 +5,9 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 import styles from './styles.module.scss';
 
 export function SignInButton() {
-  const { data: session } = useSession()
-
+  const { data: session, status } = useSession()
+  const loading = status === "loading"
+  
   return session ? (
     <button
       type="button"
